@@ -346,6 +346,18 @@
               <input type="checkbox" class="model-toggle-chk" data-model="claude" checked>
               <span>Claude 3.5 Sonnet</span>
             </label>
+            <label class="model-pill-label" style="border-color:#e11d48; color:#e11d48;">
+              <input type="checkbox" class="model-toggle-chk" data-model="opus">
+              <span>Claude 3.5 Opus</span>
+            </label>
+            <label class="model-pill-label" style="border-color:#f43f5e; color:#f43f5e;">
+              <input type="checkbox" class="model-toggle-chk" data-model="grok">
+              <span>Grok 2 / 3</span>
+            </label>
+            <label class="model-pill-label" style="border-color:#14b8a6; color:#14b8a6;">
+              <input type="checkbox" class="model-toggle-chk" data-model="kimi">
+              <span>Kimi k1.5</span>
+            </label>
             <label class="model-pill-label" style="border-color:#a855f7; color:#a855f7;">
               <input type="checkbox" class="model-toggle-chk" data-model="llama">
               <span>Llama 3.1 405B</span>
@@ -356,9 +368,24 @@
         <!-- ROI Cost & Speed Calculator -->
         <div class="benchmark-card" id="calculator">
           <h3 style="margin-bottom:6px;">TCO（総保有コスト）削減シミュレーター</h3>
-          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:24px;">
-            スライダーを動かして、Gemini 3.8 Flash導入によるAPIコスト削減額とユーザー待機時間短縮効果を算出してください。
+          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:20px;">
+            比較対象モデルとスライダーを動かして、Gemini 3.8 Flash導入によるAPIコスト削減額とユーザー待機時間短縮効果を算出してください。
           </p>
+
+          <div class="calc-field">
+            <div class="calc-label-row">
+              <span>比較対象モデル</span>
+              <span style="font-size:0.8rem; color:var(--text-subtle);">比較先のAIモデルを選択</span>
+            </div>
+            <select class="pg-select" id="calc-target-model" style="width:100%;">
+              <option value="gpt4o">GPT-4o ($5.00 / $15.00 per 1M tokens)</option>
+              <option value="opus">Claude 3.5 Opus ($15.00 / $75.00 per 1M tokens)</option>
+              <option value="claude">Claude 3.5 Sonnet ($3.00 / $15.00 per 1M tokens)</option>
+              <option value="grok">Grok 2 / 3 ($2.00 / $10.00 per 1M tokens)</option>
+              <option value="kimi">Kimi k1.5 ($1.50 / $3.00 per 1M tokens)</option>
+              <option value="llama">Llama 3.1 405B ($3.00 / $5.00 per 1M tokens)</option>
+            </select>
+          </div>
 
           <div class="calc-field">
             <div class="calc-label-row">

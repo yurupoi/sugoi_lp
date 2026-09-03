@@ -11,6 +11,9 @@ class BenchmarkController {
       gemini: true,
       gpt4o: true,
       claude: true,
+      opus: false,
+      grok: false,
+      kimi: false,
       llama: false
     };
 
@@ -41,6 +44,24 @@ class BenchmarkController {
         color: '#f97316',
         fill: 'rgba(249, 115, 22, 0.15)',
         scores: [68, 91, 72, 96, 50, 45]
+      },
+      opus: {
+        name: 'Claude 3.5 Opus',
+        color: '#e11d48',
+        fill: 'rgba(225, 29, 72, 0.15)',
+        scores: [38, 95, 62, 98, 25, 20]
+      },
+      grok: {
+        name: 'Grok 2 / 3 (xAI)',
+        color: '#f43f5e',
+        fill: 'rgba(244, 63, 94, 0.15)',
+        scores: [78, 88, 58, 90, 60, 40]
+      },
+      kimi: {
+        name: 'Kimi k1.5 (Moonshot)',
+        color: '#14b8a6',
+        fill: 'rgba(20, 184, 166, 0.15)',
+        scores: [62, 82, 96, 85, 72, 30]
       },
       llama: {
         name: 'Llama 3.1 405B',
@@ -203,13 +224,26 @@ class BenchmarkController {
       if (inTokenLabel) inTokenLabel.textContent = inTokens.toLocaleString() + ' tokens';
       if (outTokenLabel) outTokenLabel.textContent = outTokens.toLocaleString() + ' tokens';
 
+      const targetModelSelect = document.getElementById('calc-target-model');
+      const targetModelKey = targetModelSelect ? targetModelSelect.value : 'gpt4o';
+
+      const pricingTable = {
+        gpt4o: { in: 5.00, out: 15.00, tps: 74, name: 'GPT-4o' },
+        opus: { in: 15.00, out: 75.00, tps: 38, name: 'Claude 3.5 Opus' },
+        claude: { in: 3.00, out: 15.00, tps: 68, name: 'Claude 3.5 Sonnet' },
+        grok: { in: 2.00, out: 10.00, tps: 78, name: 'Grok 2 / 3' },
+        kimi: { in: 1.50, out: 3.00, tps: 62, name: 'Kimi k1.5' },
+        llama: { in: 3.00, out: 5.00, tps: 52, name: 'Llama 3.1 405B' }
+      };
+
+      const comp = pricingTable[targetModelKey] || pricingTable.gpt4o;
+
       // Pricing (Per 1M tokens)
-      // Standard Frontier (e.g. GPT-4o): $5.00 input / $15.00 output
-      // Gemini 3.8 Flash: $0.35 input / $1.05 output (~93% reduction)
+      // Selected Competitor vs Gemini 3.8 Flash ($0.35 in / $1.05 out, 248 tps)
       const totalInM = (requests * inTokens) / 1000000;
       const totalOutM = (requests * outTokens) / 1000000;
 
-      const competitorCost = (totalInM * 5.00) + (totalOutM * 15.00);
+      const competitorCost = (totalInM * comp.in) + (totalOutM * comp.out);
       const geminiCost = (totalInM * 0.35) + (totalOutM * 1.05);
 
       const monthlySavings = Math.max(0, competitorCost - geminiCost);
@@ -217,9 +251,8 @@ class BenchmarkController {
       const percentSaved = Math.round((monthlySavings / competitorCost) * 100);
 
       // Latency Savings:
-      // Competitor avg 65 tps, Gemini 3.8 Flash avg 240 tps
-      // Saved time per request = (outTokens / 65) - (outTokens / 240)
-      const secondsSavedPerReq = (outTokens / 65) - (outTokens / 240);
+      // Competitor avg tps vs Gemini 3.8 Flash (248 tps)
+      const secondsSavedPerReq = Math.max(0, (outTokens / comp.tps) - (outTokens / 248));
       const totalHoursSavedAnnual = Math.round((requests * secondsSavedPerReq * 12) / 3600);
 
       if (savingDollarsLabel) {
@@ -232,12 +265,20 @@ class BenchmarkController {
         savingHoursLabel.textContent = `${totalHoursSavedAnnual.toLocaleString()} 時間`;
       }
       if (competitorCostLabel) {
-        competitorCostLabel.textContent = `$${Math.round(competitorCost).toLocaleString()} /月`;
+        competitorCostLabel.textContent = `$${Math.round(competitorCost).toLocaleString()} /月 (${comp.name})`;
       }
       if (geminiCostLabel) {
         geminiCostLabel.textContent = `$${Math.round(geminiCost).toLocaleString()} /月`;
       }
     };
+
+    const targetModelSelect = document.getElementById('calc-target-model');
+    if (targetModelSelect) {
+      targetModelSelect.addEventListener('change', () => {
+        updateCalc();
+        if (window.soundEngine) window.soundEngine.playClick();
+      });
+    }
 
     [reqSlider, inTokenSlider, outTokenSlider].forEach(slider => {
       if (slider) {

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini 3.8 Flash — 思考の速度を超える、新世代マルチモーダル超知能</title>
+  <meta name="description" content="Gemini 3.8 Flash 公式体感ランディングページ。250 tokens/secの超高速生成、100万トークン長文理解、マルチモーダル空間解析、超低遅延フルデュプレックス音声をブラウザ上で直接体験。">
+  <meta name="keywords" content="Gemini, Gemini 3.8 Flash, AI, Google DeepMind, Multimodal, LLM, 1M Context, 超高速AI">
+  
+  <!-- OGP / Social Meta -->
+  <meta property="og:title" content="Gemini 3.8 Flash — 思考の速度を超える、超知能の閃き">
+  <meta property="og:description" content="250 tpsの爆速推論・100万トークンコンテキスト・82ms極小レイテンシをブラウザで体感できるインタラクティブLP。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yurupoi.github.io/sugoi_lp/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon (Gemini Quad Star Vector) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%2338bdf8'/><stop offset='50%' stop-color='%23818cf8'/><stop offset='100%' stop-color='%23c084fc'/></linearGradient></defs><path d='M50 0 C50 30 70 50 100 50 C70 50 50 70 50 100 C50 70 30 50 0 50 C30 50 50 30 50 0 Z' fill='url(%23g)'/></svg>">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Dynamic Neural Synapse Particles Canvas -->
+  <canvas id="neuralCanvas"></canvas>
+
+  <!-- Cyber Grid Texture -->
+  <div class="cyber-grid-overlay"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="main-nav">
+    <div class="container nav-inner">
+      <a href="#" class="brand-logo" data-sound="hover">
+        <svg class="brand-icon-svg" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="navGeminiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#38bdf8"/>
+              <stop offset="50%" stop-color="#818cf8"/>
+              <stop offset="100%" stop-color="#c084fc"/>
+            </linearGradient>
+          </defs>
+          <path d="M50 0 C50 28 72 50 100 50 C72 50 50 72 50 100 C50 72 28 50 0 50 C28 50 50 28 50 0 Z" fill="url(#navGeminiGrad)"/>
+        </svg>
+        <span>Gemini 3.8 <span class="gradient-text">Flash</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#playground" data-sound-hover>⚡ Playground</a></li>
+        <li><a href="#benchmark" data-sound-hover>📊 ベンチマーク</a></li>
+        <li><a href="#architecture" data-sound-hover>🏗️ アーキテクチャ</a></li>
+        <li><a href="#calculator" data-sound-hover>💰 ROI試算</a></li>
+        <li><a href="#developer" data-sound-hover>💻 Quickstart</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="sound-toggle-btn" class="btn-nav-audio" title="サイバーシンセ音響のON/OFF">
+          <span class="icon">🔇</span><span>音声 OFF</span>
+        </button>
+        <a href="https://github.com/yurupoi/sugoi_lp" target="_blank" rel="noopener noreferrer" class="btn-github" data-sound="hover">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="メニューを開く">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       HERO SECTION
+       ======================================================================== -->
+  <header class="hero-section">
+    <div class="container hero-content">
+      <div class="pill-badge reveal-on-scroll">
+        <span class="pulsing-dot"></span>
+        <span>Gemini 3.8 Flash Public Showcase — 臨界速度の超知能</span>
+      </div>
+
+      <h1 class="hero-title reveal-on-scroll">
+        思考の速度を超える。<br>
+        <span class="gradient-text">新世代マルチモーダル超知能。</span>
+      </h1>
+
+      <p class="hero-subtitle reveal-on-scroll">
+        <strong>250 tokens/sec</strong> の超高速ストリーミング、<strong>1,000,000 トークン</strong> の超長文文脈、そして <strong>82ms</strong> の極小レイテンシ。<br>
+        すべての開発者とクリエイターへ、かつてない創造の瞬発力と圧倒的なコスト効率をお届けします。
+      </p>
+
+      <div class="hero-cta-group reveal-on-scroll">
+        <a href="#playground" class="btn-primary" data-sound="click">
+          <span>⚡ ライブPlaygroundを体験</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#benchmark" class="btn-secondary" data-sound="click">
+          <span>📊 ベンチマーク比較を見る</span>
+        </a>
+      </div>
+
+      <!-- Real-time Telemetry HUD Cards -->
+      <div class="hero-telemetry-hud reveal-on-scroll">
+        <div class="hud-card" data-sound-hover>
+          <div class="hud-label">
+            <span>生成スループット</span>
+            <span>⚡ SPEED</span>
+          </div>
+          <div class="hud-val gradient-text" id="hud-tps">248 tps</div>
+          <div class="hud-sub">秒速240トークン超の爆速出力</div>
+        </div>
+
+        <div class="hud-card" data-sound-hover>
+          <div class="hud-label">
+            <span>初回応答遅延 (TTFT)</span>
+            <span>⏱️ LATENCY</span>
+          </div>
+          <div class="hud-val" id="hud-ttft">82 ms</div>
+          <div class="hud-sub">人間の知覚を超える即時応答</div>
+        </div>
+
+        <div class="hud-card" data-sound-hover>
+          <div class="hud-label">
+            <span>コンテキストウィンドウ</span>
+            <span>📚 MEMORY</span>
+          </div>
+          <div class="hud-val" id="hud-ctx">1,000,000</div>
+          <div class="hud-sub">大容量コードベース・動画を丸ごと記憶</div>
+        </div>
+
+        <div class="hud-card" data-sound-hover>
+          <div class="hud-label">
+            <span>MMLU-Pro 推論精度</span>
+            <span>🧠 ACCURACY</span>
+          </div>
+          <div class="hud-val gradient-text-amber" id="hud-benchmark">92.4%</div>
+          <div class="hud-sub">高度数学・プログラミング最高水準</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       SECTION 1: INTERACTIVE PLAYGROUND
+       ======================================================================== -->
+  <section class="section-padding" id="playground">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <div class="pill-badge">
+          <span>⚡ LIVE INTERACTIVE SIMULATOR</span>
+        </div>
+        <h2 class="section-title">その手で体感する、<span class="gradient-text">Gemini 3.8 Flash</span> の威力。</h2>
+        <p class="section-desc">
+          ただの説明文ではありません。ブラウザ上で直接ボタンを押し、圧倒的な生成スピード、空間知能、100万トークン探索、超低遅延対話をリアルタイムに体感してください。
+        </p>
+      </div>
+
+      <!-- Playground Window Container -->
+      <div class="playground-wrapper reveal-on-scroll">
+        <!-- Terminal Window Bar -->
+        <div class="pg-window-bar">
+          <div class="window-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+
+          <!-- Feature Tabs -->
+          <div class="pg-tabs">
+            <button class="pg-tab-btn active" data-tab="code">
+              <span>⚡ 超高速コード生成</span>
+            </button>
+            <button class="pg-tab-btn" data-tab="vision">
+              <span>👁️ マルチモーダル空間解析</span>
+            </button>
+            <button class="pg-tab-btn" data-tab="needle">
+              <span>📚 1Mニードル探索</span>
+            </button>
+            <button class="pg-tab-btn" data-tab="voice">
+              <span>🎙️ 超低遅延フルデュプレックス音声</span>
+            </button>
+          </div>
+
+          <div class="window-status-badge">
+            <span class="pulsing-dot" style="width:6px; height:6px;"></span>
+            <span style="font-size:0.78rem; color:#94a3b8; font-family:var(--font-mono);">KERNEL: v3.8-FLASH</span>
+          </div>
+        </div>
+
+        <!-- Playground Content Panels -->
+        <div class="pg-content-area">
+          <!-- TAB 1: CODE GENERATOR -->
+          <div class="pg-panel active" id="pg-panel-code">
+            <div class="code-controls">
+              <label style="font-size:0.9rem; color:var(--text-muted);">プロンプト選択:</label>
+              <select class="pg-select" id="code-preset-select">
+                <option value="threejs">Three.js 3D 量子ボロノイ空間シミュレータ</option>
+                <option value="agent">自律型マルチエージェント意思決定グラフ (DAG)</option>
+                <option value="quantum">高周波取引 (HFT) 超低遅延アービトラージ分析</option>
+              </select>
+              <button class="btn-primary" id="code-stream-btn" style="padding:10px 24px; font-size:0.92rem;">
+                ⚡ 250 tps で生成実行
+              </button>
+              <button class="btn-secondary" id="code-preview-btn" style="padding:10px 20px; font-size:0.92rem;" disabled>
+                ▶ プレビュー実行
+              </button>
+            </div>
+
+            <div class="code-generator-grid">
+              <div class="code-terminal-box" id="code-output-block">// 選択中: Three.js 3D 量子ボロノイ空間シミュレータ
+// 「250 tps で生成実行」ボタンを押して、超高速ストリーミングコード生成を開始してください。</div>
+              <div class="code-preview-pane" id="code-live-preview">
+                <div class="preview-placeholder">
+                  <div style="font-size:2.5rem; margin-bottom:12px;">🪐</div>
+                  <p>「プレビュー実行」をクリックすると<br>生成されたThree.js 3Dコードがリアルタイムに実行・描画されます。</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="telemetry-strip">
+              <div class="strip-item">実効生成速度: <span id="code-tps-val">0 tps</span></div>
+              <div class="strip-item">出力トークン: <span id="code-tokens-val">0 tokens</span></div>
+              <div class="strip-item">所要時間: <span id="code-time-val">0.00s</span></div>
+              <div class="strip-item">TTFT: <span style="color:#10b981;">78 ms</span></div>
+            </div>
+          </div>
+
+          <!-- TAB 2: MULTIMODAL VISION -->
+          <div class="pg-panel" id="pg-panel-vision">
+            <div class="code-controls">
+              <button class="btn-primary" id="vision-scan-btn" style="padding:10px 24px; font-size:0.92rem;">
+                🔍 空間解析レーダーを照射
+              </button>
+              <span style="color:var(--text-muted); font-size:0.88rem;">ターゲット: 次世代AI半導体SoC 高解像度ダイ構造図</span>
+            </div>
+
+            <div class="vision-grid">
+              <div class="vision-canvas-wrap">
+                <canvas id="vision-canvas" width="500" height="320"></canvas>
+              </div>
+              <div class="vision-log-box" id="vision-log-output">
+                <div>
+                  <div class="log-line text-cyan">⚡ 空間解析スタンバイ完了 (Canvas Ready)</div>
+                  <div class="log-line text-white">「空間解析レーダーを照射」ボタンをクリックすると、Gemini 3.8 Flashが回路コンポーネントをリアルタイム特定します。</div>
+                </div>
+                <div style="font-size:0.8rem; color:var(--text-subtle);">Resolution: 4K Spatial Grid / Confidence Threshold: 99.0%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: NEEDLE IN A HAYSTACK -->
+          <div class="pg-panel" id="pg-panel-needle">
+            <div class="needle-container">
+              <div class="code-controls">
+                <button class="btn-primary" id="needle-scan-btn" style="padding:10px 24px; font-size:0.92rem;">
+                  ⚡ 1,000,000 トークンから瞬時探索
+                </button>
+                <span style="color:var(--text-muted); font-size:0.88rem;">
+                  100万トークンのコードベースに埋め込まれた「極秘シードキー」をスキャン
+                </span>
+              </div>
+
+              <!-- Matrix of blocks -->
+              <div class="needle-matrix-grid" id="needle-matrix-grid"></div>
+
+              <div class="telemetry-strip" style="margin-top:0;">
+                <div class="strip-item">総コンテキスト量: <span>1,000,000 Tokens</span></div>
+                <div class="strip-item">探索所要時間: <span id="needle-latency-val">待機中</span></div>
+                <div class="strip-item">検索精度 (Accuracy): <span id="needle-acc-val">待機中</span></div>
+              </div>
+
+              <div id="needle-result-output"></div>
+            </div>
+          </div>
+
+          <!-- TAB 4: REALTIME VOICE -->
+          <div class="pg-panel" id="pg-panel-voice">
+            <div class="code-controls">
+              <button class="btn-primary" id="voice-demo-btn" style="padding:10px 24px; font-size:0.92rem;">
+                🎙️ 音声対話をシミュレート
+              </button>
+              <span id="voice-status-text" style="color:var(--text-muted); font-size:0.88rem;">マイク待機中... 「音声対話をシミュレート」をクリックしてください</span>
+            </div>
+
+            <div class="voice-layout">
+              <div class="voice-visualizer-pane">
+                <canvas id="voice-wave-canvas" width="440" height="140"></canvas>
+                <div style="margin-top:14px; font-size:0.85rem; color:var(--text-muted); font-family:var(--font-mono);">
+                  Voice-to-Voice Latency: <span id="voice-latency-val" style="color:#38bdf8; font-weight:700;">-- ms</span> (人間の会話知覚限界: &lt;200ms)
+                </div>
+              </div>
+
+              <div class="voice-transcript-pane" id="voice-transcript-box">
+                <div class="chat-bubble user">
+                  <span class="sender">User</span>
+                  <p>「Gemini 3.8 Flash、音声会話の遅延はどのくらい？」</p>
+                </div>
+                <div class="chat-bubble model">
+                  <span class="sender">Gemini 3.8 Flash (応答遅延: 162ms)</span>
+                  <p>「音声から直接トークンを介さずにニューラル合成するため、160ms前後の超低遅延で自然な相槌や割り込みに対応できます！」</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 2: BENCHMARKS & ROI CALCULATOR
+       ======================================================================== -->
+  <section class="section-padding" id="benchmark" style="background: rgba(12, 17, 30, 0.5);">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <div class="pill-badge">
+          <span>📊 BENCHMARKS & COST EFFICIENCY</span>
+        </div>
+        <h2 class="section-title">圧倒的な性能差を、<span class="gradient-text">数値で証明。</span></h2>
+        <p class="section-desc">
+          フロンティア級モデルとの多次元比較レーダーチャートと、あなたのサービスへの導入でどれほどのコストと時間を削減できるかを試算するリアルタイムシミュレーター。
+        </p>
+      </div>
+
+      <div class="benchmark-grid reveal-on-scroll">
+        <!-- Radar Chart Card -->
+        <div class="benchmark-card">
+          <h3 style="margin-bottom:6px;">総合フロンティア能力レーダー</h3>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:20px;">
+            主要フロンティアAIモデルとの6次元ベンチマーク比較（速度・視覚・長文・コード・コスト・低遅延）
+          </p>
+
+          <div class="radar-wrapper">
+            <canvas id="benchmark-radar-canvas" width="440" height="380"></canvas>
+          </div>
+
+          <div class="model-toggle-strip">
+            <label class="model-pill-label" style="border-color:#38bdf8; color:#38bdf8;">
+              <input type="checkbox" class="model-toggle-chk" data-model="gemini" checked>
+              <span>Gemini 3.8 Flash</span>
+            </label>
+            <label class="model-pill-label" style="border-color:#10b981; color:#10b981;">
+              <input type="checkbox" class="model-toggle-chk" data-model="gpt4o" checked>
+              <span>GPT-4o</span>
+            </label>
+            <label class="model-pill-label" style="border-color:#f97316; color:#f97316;">
+              <input type="checkbox" class="model-toggle-chk" data-model="claude" checked>
+              <span>Claude 3.5 Sonnet</span>
+            </label>
+            <label class="model-pill-label" style="border-color:#a855f7; color:#a855f7;">
+              <input type="checkbox" class="model-toggle-chk" data-model="llama">
+              <span>Llama 3.1 405B</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ROI Cost & Speed Calculator -->
+        <div class="benchmark-card" id="calculator">
+          <h3 style="margin-bottom:6px;">TCO（総保有コスト）削減シミュレーター</h3>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:24px;">
+            スライダーを動かして、Gemini 3.8 Flash導入によるAPIコスト削減額とユーザー待機時間短縮効果を算出してください。
+          </p>
+
+          <div class="calc-field">
+            <div class="calc-label-row">
+              <span>月間 API リクエスト数</span>
+              <span class="calc-val-badge" id="calc-requests-val">100,000 回/月</span>
+            </div>
+            <input type="range" class="calc-slider" id="calc-requests" min="10000" max="2000000" step="10000" value="100000">
+          </div>
+
+          <div class="calc-field">
+            <div class="calc-label-row">
+              <span>1リクエストあたりの入力トークン数</span>
+              <span class="calc-val-badge" id="calc-in-tokens-val">2,000 tokens</span>
+            </div>
+            <input type="range" class="calc-slider" id="calc-in-tokens" min="200" max="50000" step="200" value="2000">
+          </div>
+
+          <div class="calc-field">
+            <div class="calc-label-row">
+              <span>1リクエストあたりの出力トークン数</span>
+              <span class="calc-val-badge" id="calc-out-tokens-val">500 tokens</span>
+            </div>
+            <input type="range" class="calc-slider" id="calc-out-tokens" min="100" max="4000" step="100" value="500">
+          </div>
+
+          <!-- Results Box -->
+          <div class="calc-results-box">
+            <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:4px;">年間削減コスト期待値</div>
+            <div class="result-headline" id="calc-saving-dollars">約 $18,480</div>
+            <div class="result-subhead" id="calc-saving-percent">91% コスト削減</div>
+
+            <div class="comparison-stats">
+              <div>
+                <div style="font-size:0.75rem; color:var(--text-subtle);">他社同等モデル想定費用</div>
+                <div style="font-size:1.1rem; color:#ef4444; font-weight:700;" id="calc-competitor-cost">$1,750 /月</div>
+              </div>
+              <div>
+                <div style="font-size:0.75rem; color:var(--text-subtle);">Gemini 3.8 Flash 利用時</div>
+                <div style="font-size:1.1rem; color:#10b981; font-weight:700;" id="calc-gemini-cost">$123 /月</div>
+              </div>
+              <div style="grid-column:span 2; padding-top:8px; border-top:1px dashed rgba(255,255,255,0.08);">
+                <div style="font-size:0.75rem; color:var(--text-subtle);">年間で短縮されるユーザー待ち時間</div>
+                <div style="font-size:1.2rem; color:#38bdf8; font-weight:700;" id="calc-saving-hours">1,340 時間</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 3: ARCHITECTURE BENTO GRID
+       ======================================================================== -->
+  <section class="section-padding" id="architecture">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <div class="pill-badge">
+          <span>🏗️ NEXT-GEN ARCHITECTURE</span>
+        </div>
+        <h2 class="section-title">臨界速度を支える、<span class="gradient-text">5つの技術的飛躍。</span></h2>
+        <p class="section-desc">
+          なぜ Gemini 3.8 Flash はここまで速く、賢いのか。Google DeepMindの最新研究成果を結集したコアアーキテクチャ。
+        </p>
+      </div>
+
+      <div class="bento-grid reveal-on-scroll">
+        <!-- Card 1: Wide -->
+        <div class="bento-card wide">
+          <div class="bento-icon">⚡</div>
+          <h3 class="bento-title">Flash-Attention v3 & 投機的超並列デコーディング</h3>
+          <p class="bento-desc">
+            アテンション計算のメモリバンド幅ボトルネックを極限まで排除。ドラフトモデルと検証モデルの超高速パイプライン連携により、単一GPUクラスタにおけるトークン生成速度を従来比3.8倍（最大260 tps）に引き上げました。
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bento-card">
+          <div class="bento-icon">👁️</div>
+          <h3 class="bento-title">ネイティブ・マルチモーダルトークナイザー</h3>
+          <p class="bento-desc">
+            テキスト、画像、動画、音声を個別のエンコーダーを介さず、単一の統合表現空間でエンドツーエンドに同時処理。視覚と音声のシームレスな理解を実現。
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bento-card">
+          <div class="bento-icon">📚</div>
+          <h3 class="bento-title">1,000,000 トークン ロスレス・キャッシュ</h3>
+          <p class="bento-desc">
+            超長文でも精度低下（Lost in the Middle現象）を起こさないRoPE拡張技術を搭載。数千ページの仕様書やリポジトリ全体を1回のプロンプトで完全走破。
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bento-card">
+          <div class="bento-icon">🛠️</div>
+          <h3 class="bento-title">自律エージェント & 高速ツールコーリング</h3>
+          <p class="bento-desc">
+            Function Calling時のレイテンシを75%削減。複数ツールの並行実行（Parallel Tool Calling）により、自律型AIエージェントの決定ループを瞬時に完了させます。
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="bento-card">
+          <div class="bento-icon">💎</div>
+          <h3 class="bento-title">10倍の圧倒的コストパフォーマンス</h3>
+          <p class="bento-desc">
+            推論効率の最適化により、フロンティアモデル比約10分の1のAPI価格を実現。高品質な大規模商用展開を、予算の心配なく可能にします。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 4: DEVELOPER QUICKSTART
+       ======================================================================== -->
+  <section class="section-padding" id="developer" style="background: rgba(12, 17, 30, 0.5);">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <div class="pill-badge">
+          <span>💻 3 LINES OF CODE</span>
+        </div>
+        <h2 class="section-title">わずか数分で、<span class="gradient-text">あなたのアプリへ。</span></h2>
+        <p class="section-desc">
+          公式SDKおよびREST APIをサポート。たった数行のコードで、今日からGemini 3.8 Flashの超高速推論を組み込めます。
+        </p>
+      </div>
+
+      <div class="quickstart-box reveal-on-scroll">
+        <div class="qs-nav-tabs">
+          <button class="qs-tab-btn active" data-lang="python">Python</button>
+          <button class="qs-tab-btn" data-lang="node">Node.js / TypeScript</button>
+          <button class="qs-tab-btn" data-lang="curl">cURL</button>
+        </div>
+
+        <!-- Python Panel -->
+        <div class="qs-code-panel active" id="qs-panel-python">
+          <button class="copy-code-btn" data-target="code-python">📋 コードをコピー</button>
+          <pre><code id="code-python"># pip install google-genai
+from google import genai
+
+client = genai.Client()
+
+response = client.models.generate_content_stream(
+    model="gemini-3.8-flash",
+    contents="超高速コード生成とマルチモーダル推論を実行してください。",
+)
+
+for chunk in response:
+    print(chunk.text, end="")</code></pre>
+        </div>
+
+        <!-- Node.js Panel -->
+        <div class="qs-code-panel" id="qs-panel-node">
+          <button class="copy-code-btn" data-target="code-node">📋 コードをコピー</button>
+          <pre><code id="code-node">// npm install @google/genai
+import { GoogleGenAI } from "@google/genai";
+
+const ai = new GoogleGenAI();
+const stream = await ai.models.generateContentStream({
+  model: "gemini-3.8-flash",
+  contents: ["超高速コード生成とマルチモーダル推論を実行してください。"],
+});
+
+for await (const chunk of stream) {
+  process.stdout.write(chunk.text);
+}</code></pre>
+        </div>
+
+        <!-- cURL Panel -->
+        <div class="qs-code-panel" id="qs-panel-curl">
+          <button class="copy-code-btn" data-target="code-curl">📋 コードをコピー</button>
+          <pre><code id="code-curl">curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:streamGenerateContent?alt=sse&key=${GEMINI_API_KEY}" \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "contents": [{"parts": [{"text": "Gemini 3.8 Flashの力を実証してください。"}]}]
+  }'</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SITE FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="gradient-text">Gemini 3.8 Flash</span> Showcase
+      </div>
+
+      <div class="footer-copy">
+        Crafted with precision &amp; high-fidelity web performance. Hosted on <a href="https://github.com/yurupoi/sugoi_lp" target="_blank" rel="noopener noreferrer" style="color:#38bdf8; text-decoration:none;">GitHub Pages</a>.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/sound.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/playground.js"></script>
+  <script src="js/benchmark.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

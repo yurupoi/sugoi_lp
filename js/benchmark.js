@@ -46,22 +46,22 @@ class BenchmarkController {
         scores: [68, 91, 72, 96, 50, 45]
       },
       opus: {
-        name: 'Claude 3.5 Opus',
+        name: 'Claude 5 Opus',
         color: '#e11d48',
         fill: 'rgba(225, 29, 72, 0.15)',
-        scores: [38, 95, 62, 98, 25, 20]
+        scores: [45, 97, 75, 99, 20, 30]
       },
       grok: {
-        name: 'Grok 2 / 3 (xAI)',
+        name: 'Grok 4 (xAI)',
         color: '#f43f5e',
         fill: 'rgba(244, 63, 94, 0.15)',
-        scores: [78, 88, 58, 90, 60, 40]
+        scores: [88, 93, 72, 94, 68, 50]
       },
       kimi: {
-        name: 'Kimi k1.5 (Moonshot)',
+        name: 'Kimi K3 (Moonshot)',
         color: '#14b8a6',
         fill: 'rgba(20, 184, 166, 0.15)',
-        scores: [62, 82, 96, 85, 72, 30]
+        scores: [70, 88, 99, 91, 80, 40]
       },
       llama: {
         name: 'Llama 3.1 405B',
@@ -229,10 +229,10 @@ class BenchmarkController {
 
       const pricingTable = {
         gpt4o: { in: 5.00, out: 15.00, tps: 74, name: 'GPT-4o' },
-        opus: { in: 15.00, out: 75.00, tps: 38, name: 'Claude 3.5 Opus' },
+        opus: { in: 20.00, out: 100.00, tps: 45, name: 'Claude 5 Opus' },
         claude: { in: 3.00, out: 15.00, tps: 68, name: 'Claude 3.5 Sonnet' },
-        grok: { in: 2.00, out: 10.00, tps: 78, name: 'Grok 2 / 3' },
-        kimi: { in: 1.50, out: 3.00, tps: 62, name: 'Kimi k1.5' },
+        grok: { in: 3.00, out: 12.00, tps: 88, name: 'Grok 4' },
+        kimi: { in: 1.80, out: 4.50, tps: 70, name: 'Kimi K3' },
         llama: { in: 3.00, out: 5.00, tps: 52, name: 'Llama 3.1 405B' }
       };
 
